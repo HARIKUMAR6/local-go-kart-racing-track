@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+/* Dark mode is driven by <html data-theme="dark">, not the OS media query */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@source "../../**/*.html";
+@source "../../js/**/*.js";
+
+@import "./tokens.css";
+@import "./base.css";
+@import "./components.css";
+@import "./pages.css";
+@import "./inner.css";
+@import "./dashboard.css";

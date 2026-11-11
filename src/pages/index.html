@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apexline Kart Circuit – Indoor &amp; Outdoor Go-Kart Racing</title>
+  <meta name="description" content="Pro-grade indoor and outdoor karting with live lap timing. Find your line. Own the apex. Book a race at Apexline Kart Circuit.">
+  <meta name="theme-color" content="#0b0e13">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/assets/fonts/big-shoulders-display-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/dist/styles.css">
+  <script src="/js/theme-init.js"></script>
+  <script type="module" src="/js/main.js"></script>
+</head>
+<body data-page="home-1" data-header="overlay">
+  <div data-component="site-header"></div>
+
+  <main id="main">
+    <!-- ============ 1 · HERO ============ -->
+    <section class="hero" aria-labelledby="h1-title">
+      <div class="hero-media">{{img:h1-hero|sizes=100vw|eager}}</div>
+      <div class="hero-scrim"></div>
+      <div class="container-wide on-photo">
+        <div class="hero-copy-pin grid max-w-2xl gap-5 text-center max-md:mx-auto md:text-start">
+          <p class="eyebrow justify-self-center md:justify-self-start">Indoor &amp; Outdoor Karting</p>
+          <h1 id="h1-title" class="display-xl">Feel the speed.<br><span class="text-display">Own the track.</span></h1>
+          <p class="lead mx-auto md:mx-0">Pro-grade karts, two circuits and live lap timing. Book a session and chase your best lap.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary btn-lg" href="/races-pricing#book">Book a Race</a>
+            <a class="btn btn-secondary btn-lg" href="#track">Explore the Track</a>
+          </div>
+        </div>
+        <div class="stat-strip" role="list" aria-label="Circuit facts">
+          <div role="listitem"><p class="stat-num">720 m</p><p class="stat-label">Indoor circuit</p></div>
+          <div role="listitem"><p class="stat-num">1,180 m</p><p class="stat-label">Outdoor circuit</p></div>
+          <div role="listitem"><p class="stat-num">Live</p><p class="stat-label">Lap timing</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 2 · TRACK EXPERIENCE ============ -->
+    <section id="track" class="section tone-base pb-0" aria-labelledby="track-title">
+      <div class="container-site">
+        <div class="section-head">
+          <p class="eyebrow">Two circuits · One obsession</p>
+          <h2 id="track-title">Choose your arena</h2>
+        </div>
+      </div>
+      <div class="track-split">
+        <article class="track-pane" aria-labelledby="indoor-title">
+          <div class="photo-fill">{{img:h1-indoor|sizes=(min-width:1024px) 50vw,100vw}}</div>
+          <div class="scrim-bottom"></div>
+          <div class="track-pane-body">
+            <p class="eyebrow">Indoor</p>
+            <h3 id="indoor-title" class="display-lg">Indoor Circuit</h3>
+            <p class="lead">Floodlit, all-weather and electric. Tight, technical and always on.</p>
+            <ul class="track-facts"><li class="chip">720 m</li><li class="chip">14 corners</li><li class="chip">Electric karts</li></ul>
+            <a class="btn btn-volt" href="/races-pricing#indoor">Race indoors <span class="flip-rtl" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+        <article class="track-pane" aria-labelledby="outdoor-title">
+          <div class="photo-fill">{{img:h1-outdoor|sizes=(min-width:1024px) 50vw,100vw}}</div>
+          <div class="scrim-bottom"></div>
+          <div class="track-pane-body">
+            <p class="eyebrow">Outdoor</p>
+            <h3 id="outdoor-title" class="display-lg">Outdoor Circuit</h3>
+            <p class="lead">Open-air asphalt. Long straights, big braking zones, real speed.</p>
+            <ul class="track-facts"><li class="chip">1,180 m</li><li class="chip">17 corners</li><li class="chip">Petrol karts</li></ul>
+            <a class="btn btn-volt" href="/races-pricing#outdoor">Race outdoors <span class="flip-rtl" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ 3 · RACING PACKAGES ============ -->
+    <section id="packages" class="section tone-alt" aria-labelledby="packages-title">
+      <div class="container-wide grid items-start gap-10 lg:grid-cols-[5fr_7fr] lg:gap-16">
+        <div class="photo chamfer ratio-wide mx-auto w-full max-w-xl lg:sticky lg:top-28 lg:aspect-[4/5] lg:max-w-none">{{img:h1-packages|sizes=(min-width:1024px) 40vw,100vw}}</div>
+        <div>
+          <div class="section-head"><p class="eyebrow">Race formats</p><h2 id="packages-title">Pick your session</h2></div>
+          <div class="ladder">
+            <div class="ladder-row">
+              <span class="ladder-index">01</span>
+              <div><h3 class="ladder-name">Individual Race</h3><p class="ladder-detail">10 laps · timed</p></div>
+              <p class="ladder-price">$28<small>per driver</small></p>
+              <a class="btn btn-inverse btn-sm" href="/races-pricing#individual">Book<span class="visually-hidden"> Individual Race</span></a>
+            </div>
+            <div class="ladder-row" data-featured="true">
+              <span class="ladder-index">02</span>
+              <div><h3 class="ladder-name">Sprint Session</h3><p class="ladder-detail">2 heats · 8 min each <span class="ladder-flag ms-2">Most popular</span></p></div>
+              <p class="ladder-price">$45<small>per driver</small></p>
+              <a class="btn btn-primary btn-sm" href="/races-pricing#sprint">Book<span class="visually-hidden"> Sprint Session</span></a>
+            </div>
+            <div class="ladder-row">
+              <span class="ladder-index">03</span>
+              <div><h3 class="ladder-name">Competitive Series</h3><p class="ladder-detail">Qualifying + 20-lap final</p></div>
+              <p class="ladder-price">$69<small>per driver</small></p>
+              <a class="btn btn-inverse btn-sm" href="/races-pricing#competitive">Book<span class="visually-hidden"> Competitive Series</span></a>
+            </div>
+            <div class="ladder-row">
+              <span class="ladder-index">04</span>
+              <div><h3 class="ladder-name">Group Racing</h3><p class="ladder-detail">Private grid · host included · 8+ drivers</p></div>
+              <p class="ladder-price">$38<small>per driver</small></p>
+              <a class="btn btn-inverse btn-sm" href="/races-pricing#group">Book<span class="visually-hidden"> Group Racing</span></a>
+            </div>
+          </div>
+          <div class="cta-row mt-8"><a class="btn btn-secondary" href="/races-pricing">Full pricing &amp; rules</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4 · THE APEXLINE ADVANTAGE ============ -->
+    <section class="section tone-raised" aria-labelledby="adv-title">
+      <div class="container-wide grid items-center gap-10 lg:grid-cols-[6fr_5fr] lg:gap-16">
+        <div class="lg:order-2">
+          <div class="photo ratio-photo lg:aspect-[4/5]">{{img:h1-advantage|sizes=(min-width:1024px) 40vw,100vw}}</div>
+        </div>
+        <div class="lg:order-1">
+          <div class="section-head"><p class="eyebrow">The Apexline advantage</p><h2 id="adv-title">Built for racers</h2></div>
+          <ol class="adv-list">
+            <li class="adv-item"><h3>Track experience</h3><p>Real racing lines, kerbs and braking zones.</p></li>
+            <li class="adv-item"><h3>Racing equipment</h3><p>Pro-grade karts, race suits and full-face helmets.</p></li>
+            <li class="adv-item"><h3>Timing technology</h3><p>Transponder lap times, sector by sector.</p></li>
+            <li class="adv-item"><h3>Professional facilities</h3><p>Briefing room, paddock lounge, grid-side café.</p></li>
+            <li class="adv-item"><h3>Indoor &amp; outdoor</h3><p>Race every weather indoors. Open the throttle outdoors.</p></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 5 · RACING GALLERY ============ -->
+    <section class="section tone-base" aria-labelledby="gallery-title">
+      <div class="container-wide">
+        <div class="section-head section-head-center"><p class="eyebrow">Race atmosphere</p><h2 id="gallery-title">Life on the grid</h2></div>
+        <div class="mosaic">
+          <figure class="photo">{{img:h1-gallery-1|sizes=(min-width:768px) 66vw,100vw}}<figcaption>Race start</figcaption></figure>
+          <figure class="photo">{{img:h1-gallery-2|sizes=(min-width:768px) 33vw,50vw}}<figcaption>Indoor sprint</figcaption></figure>
+          <figure class="photo">{{img:h1-gallery-3|sizes=(min-width:768px) 33vw,50vw}}<figcaption>The arena</figcaption></figure>
+          <figure class="photo">{{img:h1-gallery-4|sizes=(min-width:768px) 50vw,100vw}}<figcaption>Outdoor flow</figcaption></figure>
+          <figure class="photo">{{img:h1-gallery-5|sizes=(min-width:768px) 50vw,100vw}}<figcaption>Paddock</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 6 · SAFETY & EQUIPMENT ============ -->
+    <section class="section tone-alt" aria-labelledby="safety-title">
+      <div class="container-wide grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <div class="section-head"><p class="eyebrow">Safety &amp; equipment</p><h2 id="safety-title">Suit up. Brief. Race.</h2></div>
+          <ul class="check-list">
+            <li class="check-item"><span class="check-mark" aria-hidden="true">{{icon:flag}}</span><div><h3>Safety equipment</h3><p>Race suit, gloves and neck protection fitted to you.</p></div></li>
+            <li class="check-item"><span class="check-mark" aria-hidden="true">{{icon:user}}</span><div><h3>Helmet &amp; racing gear</h3><p>Clean full-face helmets in every size.</p></div></li>
+            <li class="check-item"><span class="check-mark" aria-hidden="true">{{icon:clock}}</span><div><h3>Pre-race briefing</h3><p>Flags, overtaking and pit-lane rules before you roll out.</p></div></li>
+            <li class="check-item"><span class="check-mark" aria-hidden="true">{{icon:map-pin}}</span><div><h3>Track regulations</h3><p>Marshals on every circuit. Clear rules, enforced.</p></div></li>
+          </ul>
+          <div class="cta-row mt-8"><a class="btn btn-inverse" href="/safety">Read the safety guide</a></div>
+        </div>
+        <div class="photo chamfer ratio-photo mx-auto w-full max-w-xl lg:max-w-none">{{img:h1-safety|sizes=(min-width:1024px) 45vw,100vw}}</div>
+      </div>
+    </section>
+
+    <!-- ============ 7 · FINAL BOOKING CTA ============ -->
+    <section class="cta-photo" aria-labelledby="cta-title">
+      <div class="photo-fill -z-10">{{img:h1-cta|sizes=100vw}}</div>
+      <div class="scrim-flat -z-10"></div>
+      <div class="container-narrow grid gap-5 on-photo">
+        <p class="eyebrow justify-self-center">Ready when you are</p>
+        <h2 id="cta-title" class="display-lg">Your next lap<br><span class="text-display">starts here.</span></h2>
+        <p class="lead mx-auto">Pick a format, pick a slot, and we'll have your kart on the grid.</p>
+        <div class="cta-row cta-row-center"><a class="btn btn-primary btn-lg" href="/races-pricing#book">Book Your Race</a><a class="btn btn-secondary btn-lg" href="/contact">Talk to the pit crew</a></div>
+      </div>
+    </section>
+  </main>
+
+  <div data-component="site-footer"></div>
+</body>
+</html>

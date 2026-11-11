@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Racer Login – Apexline Kart Circuit</title>
+  <meta name="description" content="Sign in to your Apexline racer account to manage bookings, lap times and payments.">
+  <meta name="theme-color" content="#0b0e13">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/assets/fonts/big-shoulders-display-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/dist/styles.css">
+  <script src="/js/theme-init.js"></script>
+  <script type="module" src="/js/main.js"></script>
+</head>
+<body data-page="login">
+  <div data-component="app-bar"></div>
+
+  <main id="main" class="login">
+    <section class="login-brand on-photo" aria-label="Apexline racer portal">
+      <div class="kerb-bar" aria-hidden="true"></div>
+      <div class="login-brand-inner">
+        <p class="eyebrow">Racer portal</p>
+        <p class="login-claim">Find your line.<br><span class="text-display">Own the apex.</span></p>
+        <svg class="login-map" viewBox="0 0 400 250" aria-hidden="true" focusable="false">
+          <path class="login-map-road" d="M70 70H230C265 70 285 90 268 112C255 128 215 122 210 146C206 168 245 172 275 160C315 146 345 170 330 198C318 220 270 214 235 214H100C60 214 40 190 58 166C72 148 112 150 114 128C116 104 70 112 62 92C56 78 62 70 70 70Z"/>
+          <path class="login-map-line" d="M70 70H230C265 70 285 90 268 112C255 128 215 122 210 146C206 168 245 172 275 160C315 146 345 170 330 198C318 220 270 214 235 214H100C60 214 40 190 58 166C72 148 112 150 114 128C116 104 70 112 62 92C56 78 62 70 70 70Z"/>
+          <line x1="150" y1="58" x2="150" y2="82" stroke="#f3f1ea" stroke-width="4"/>
+        </svg>
+        <ul class="login-points">
+          <li>{{icon:stopwatch}}<span>Every lap, timed to the thousandth</span></li>
+          <li>{{icon:calendar}}<span>Bookings and payments in one place</span></li>
+          <li>{{icon:trophy}}<span>Track your place on the leaderboard</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="login-panel" aria-labelledby="login-title">
+      <div class="login-card">
+        <p class="eyebrow">Racer login</p>
+        <h1 id="login-title" class="login-h1">Welcome back, racer</h1>
+        <p class="lead">Sign in to see your bookings, lap times and results.</p>
+
+        <div data-tabs data-login-tabs class="mt-6">
+          <div class="seg seg-full" role="tablist" aria-label="Account">
+            <button class="seg-btn" role="tab" id="tab-signin" aria-controls="panel-signin" aria-selected="true">Sign in</button>
+            <button class="seg-btn" role="tab" id="tab-create" aria-controls="panel-create" aria-selected="false" tabindex="-1">Create account</button>
+          </div>
+
+          <div role="tabpanel" id="panel-signin" aria-labelledby="tab-signin" class="login-form-wrap">
+            <form data-validate data-login-form="signin" aria-label="Sign in">
+              <div class="form-grid">
+                <div class="field"><label class="field-label" for="si-email">Email address</label>
+                  <input class="field-input" id="si-email" name="email" type="email" dir="ltr" autocomplete="email" required pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" data-error-required="Please enter your email address." data-error-type="Enter a valid email address." data-error-pattern="Enter a valid email address.">
+                  <p class="field-error" data-error id="err-si-email"></p></div>
+                <div class="field"><label class="field-label" for="si-pass">Password</label>
+                  <div class="pass-wrap"><input class="field-input" id="si-pass" name="password" type="password" dir="ltr" autocomplete="current-password" required data-error-required="Please enter your password.">
+                  <button type="button" class="pass-toggle" data-pass-toggle aria-controls="si-pass" aria-pressed="false" aria-label="Show password"><span data-eye>{{icon:eye}}</span><span data-eye-off hidden>{{icon:eye-off}}</span></button></div>
+                  <p class="field-error" data-error id="err-si-pass"></p></div>
+              </div>
+              <div class="login-row">
+                <label class="check-row"><input type="checkbox" name="remember" class="check-box"><span>Remember me</span></label>
+                <button type="button" class="dlink" data-show-reset>Forgot password?</button>
+              </div>
+              <button class="btn btn-primary btn-lg btn-block mt-5" type="submit">Sign in</button>
+            </form>
+          </div>
+
+          <div role="tabpanel" id="panel-create" aria-labelledby="tab-create" class="login-form-wrap" hidden>
+            <form data-validate data-login-form="create" aria-label="Create account">
+              <div class="form-grid">
+                <div class="field"><label class="field-label" for="ca-name">Full name</label>
+                  <input class="field-input" id="ca-name" name="name" type="text" autocomplete="name" required minlength="2" data-error-required="Please enter your full name." data-error-short="Please enter your full name.">
+                  <p class="field-error" data-error id="err-ca-name"></p></div>
+                <div class="field"><label class="field-label" for="ca-email">Email address</label>
+                  <input class="field-input" id="ca-email" name="email" type="email" dir="ltr" autocomplete="email" required pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" data-error-required="Please enter your email address." data-error-type="Enter a valid email address." data-error-pattern="Enter a valid email address.">
+                  <p class="field-error" data-error id="err-ca-email"></p></div>
+                <div class="field"><label class="field-label" for="ca-pass">Password</label>
+                  <div class="pass-wrap"><input class="field-input" id="ca-pass" name="password" type="password" dir="ltr" autocomplete="new-password" required minlength="8" data-error-required="Please choose a password." data-error-short="Use at least 8 characters.">
+                  <button type="button" class="pass-toggle" data-pass-toggle aria-controls="ca-pass" aria-pressed="false" aria-label="Show password"><span data-eye>{{icon:eye}}</span><span data-eye-off hidden>{{icon:eye-off}}</span></button></div>
+                  <p class="field-hint">At least 8 characters.</p>
+                  <p class="field-error" data-error id="err-ca-pass"></p></div>
+              </div>
+              <button class="btn btn-primary btn-lg btn-block mt-5" type="submit">Create account</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="login-divider" role="separator" aria-label="or continue with"><span>or continue with</span></div>
+        <div class="social-row">
+          <button type="button" class="btn btn-secondary" data-social="Google">{{icon:google}}<span>Google</span></button>
+          <button type="button" class="btn btn-secondary" data-social="Apple">{{icon:apple}}<span>Apple</span></button>
+        </div>
+
+        <div class="login-reset" data-reset-panel hidden>
+          <h2 class="login-h2">Reset your password</h2>
+          <p class="text-muted">Enter your account email. We'll open an email to the team so they can help you back in.</p>
+          <form data-validate data-login-form="reset" aria-label="Reset password">
+            <div class="field mt-4"><label class="field-label" for="rs-email">Email address</label>
+              <input class="field-input" id="rs-email" name="email" type="email" dir="ltr" autocomplete="email" required pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" data-error-required="Please enter your email address." data-error-type="Enter a valid email address." data-error-pattern="Enter a valid email address.">
+              <p class="field-error" data-error id="err-rs-email"></p></div>
+            <div class="login-row mt-5"><button class="btn btn-primary" type="submit">Request reset</button><button type="button" class="dlink" data-hide-reset>Back to sign in</button></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

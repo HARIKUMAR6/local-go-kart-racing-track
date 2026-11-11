@@ -1,0 +1,76 @@
+/* ==========================================================================
+   BASE – fonts, resets on top of Tailwind preflight, typography defaults
+   ========================================================================== */
+
+@font-face {
+  font-family: "Big Shoulders Display Variable";
+  src: url("/assets/fonts/big-shoulders-display-latin-wght-normal.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Manrope Variable";
+  src: url("/assets/fonts/manrope-latin-wght-normal.woff2") format("woff2-variations");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-h) + 1rem);
+    -webkit-text-size-adjust: 100%;
+    overflow-x: clip;
+  }
+  body {
+    min-height: 100vh;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    overflow-x: clip;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Headings: condensed display face, tight leading */
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    line-height: 0.98;
+    letter-spacing: var(--tracking-display);
+    text-transform: uppercase;
+    text-wrap: balance;
+  }
+  h1 { font-size: clamp(2.75rem, 1.6rem + 6vw, 6rem); }
+  h2 { font-size: clamp(2.25rem, 1.4rem + 3.6vw, 4rem); }
+  h3 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); line-height: 1.05; }
+  h4 { font-size: 1.25rem; line-height: 1.1; }
+  p  { text-wrap: pretty; }
+
+  img, svg, video { max-width: 100%; }
+  img { height: auto; }
+
+  :focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+    border-radius: var(--radius-xs);
+  }
+
+  ::selection { background: var(--brand); color: var(--on-brand); }
+
+  /* Direction: logical properties are used throughout; this flips directional glyphs only */
+  [dir="rtl"] .flip-rtl { transform: scaleX(-1); }
+  [dir="rtl"] body { letter-spacing: 0; }
+  [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4 { text-transform: none; line-height: 1.2; letter-spacing: 0; }
+  [dir="rtl"] .eyebrow { letter-spacing: 0; text-transform: none; }
+}
+
+/* Unlayered on purpose: outranks every layered utility without needing !important */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms; transition-duration: 0.01ms; animation-iteration-count: 1; }
+}

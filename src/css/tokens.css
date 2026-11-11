@@ -1,0 +1,272 @@
+/* ==========================================================================
+   APEXLINE – DESIGN TOKENS  (single source of truth for both themes)
+
+   Layers
+   1. Raw brand palette + scales            → Tailwind @theme (utilities such as bg-ink-950)
+   2. Semantic tokens, LIGHT and DARK       → :root / [data-theme="dark"]
+   3. Section tones (theme-aware)           → .tone-base / .tone-alt / .tone-raised / .tone-accent
+   4. Photo context (fixed, theme-independent) → .on-photo and photographic components
+   5. Utilities for the semantic tokens     → @theme inline (bg-bg, text-text, text-accent …)
+
+   RULES
+   • Components never use raw hex. They read semantic tokens only.
+   • Section tones change *tokens*, never individual components.
+   • Anything sitting on a photograph uses the photo context (always light-on-dark),
+     because image overlays must stay readable in BOTH themes.
+   • Every foreground/background pair is verified in scripts/check-contrast.mjs and
+     again on rendered pages by scripts/audit-rendered-contrast.mjs.
+   ========================================================================== */
+
+@theme {
+  /* ---- Breakpoints: mobile 320–767 · tablet 768 · laptop 1024 · desktop 1440 ---- */
+  --breakpoint-*: initial;
+  --breakpoint-sm: 30rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 90rem;
+  --breakpoint-2xl: 120rem;
+
+  /* ---- Raw palette ---- */
+  --color-ink-950: #0b0e13;   /* Asphalt */
+  --color-ink-900: #11151c;
+  --color-ink-800: #1a202a;   /* Garage */
+  --color-ink-700: #262e3b;
+  --color-ink-500: #4a5363;
+  --color-steel-400: #a8b1c0; /* Steel */
+  --color-steel-300: #c5ccd8;
+  --color-paper-50: #f6f3ec;  /* Kerb White */
+  --color-paper-100: #ece7db;
+  --color-paper-200: #d8d2c4;
+  --color-flame-400: #ff7a50;
+  --color-flame-500: #ff4b1f; /* Apex Flame – primary brand */
+  --color-flame-600: #c8340c;
+  --color-flame-700: #a12a0a;
+  --color-volt-400: #d4f65a;
+  --color-volt-500: #c8f031;  /* Pit-lane Volt */
+  --color-volt-700: #536c00;
+  --color-ok: #1f9d55;
+  --color-warn: #f2a900;
+  --color-danger: #d92d20;
+
+  /* ---- Typography ---- */
+  --font-display: "Big Shoulders Display Variable", "Arial Narrow", Impact, sans-serif;
+  --font-sans: "Manrope Variable", system-ui, -apple-system, "Segoe UI", "Noto Sans Arabic", "Tahoma", sans-serif;
+  --text-xs: 0.75rem;  --text-sm: 0.875rem; --text-base: 1rem;   --text-lg: 1.125rem;
+  --text-xl: 1.25rem;  --text-2xl: 1.5rem;  --text-3xl: 1.875rem; --text-4xl: 2.5rem;
+  --text-5xl: 3.25rem; --text-6xl: 4.5rem;  --text-7xl: 6rem;
+  --tracking-display: 0.01em;
+  --tracking-label: 0.14em;
+
+  /* ---- Radius ---- */
+  --radius-xs: 0.125rem; --radius-sm: 0.25rem; --radius-md: 0.5rem; --radius-lg: 0.875rem; --radius-xl: 1.25rem;
+
+  /* ---- Container widths ---- */
+  --container-narrow: 48rem;
+  --container-content: 72rem;
+  --container-wide: 80rem;
+
+  --ease-race: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* --------------------------------------------------------------------------
+   Layout tokens (theme-independent)
+   -------------------------------------------------------------------------- */
+:root {
+  --header-h: 4.25rem;
+  --gutter: 1rem;
+  --section-y: 3.5rem;
+  --section-y-lg: 5rem;
+  --hero-min: 34rem;
+  --hero-height: 88svh;
+  --hero-max: 52rem;
+  --hero-compact-height: 56svh;
+  --hero-compact-min: 22rem;
+  --hero-compact-max: 34rem;
+}
+@media (min-width: 48rem) { :root { --gutter: 2rem; --section-y: 4.5rem; --header-h: 4.75rem; --hero-height: 82svh; } }
+@media (min-width: 64rem) { :root { --gutter: 2.5rem; --section-y: var(--section-y-lg); --hero-height: 90svh; --hero-compact-height: 60svh; } }
+@media (min-width: 90rem) { :root { --gutter: 3rem; --section-y: 6.5rem; --hero-max: 60rem; --hero-compact-max: 38rem; } }
+
+/* ==========================================================================
+   2 · SEMANTIC TOKENS — LIGHT  (paper · ivory · white, flame accents)
+   ========================================================================== */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Surfaces: section backgrounds */
+  --bg: #f6f3ec;              /* page + "base" sections        – Kerb White */
+  --bg-alt: #ece7db;          /* "alt" sections                – Ivory */
+  --bg-raised: #ffffff;       /* "raised" sections             – Paper white */
+  --surface: #ffffff;         /* cards, panels, dropdowns */
+  --surface-alt: #f6f3ec;     /* hover / secondary card fill */
+
+  /* Text */
+  --heading: #11151c;
+  --text: #11151c;
+  --text-muted: #4a5363;
+  --text-accent: #a12a0a;     /* Apex Flame darkened for AA text on paper / ivory / white */
+  --highlight: #a12a0a;       /* emphasised numerals & key figures */
+  --display-accent: #c8340c;  /* large display words in brand flame (≥3:1 on paper / ivory / white) */
+
+  /* Lines */
+  --border: #d3ccbc;          /* decorative dividers */
+  --border-strong: #7e796b;   /* meaningful UI boundaries (≥3:1): inputs, outline buttons */
+
+  /* Controls */
+  --brand: #ff4b1f;
+  --on-brand: #0b0e13;
+  --brand-hover: #ff6238;
+  --inverse-bg: #0b0e13;      /* "inverse" button: dark on light */
+  --inverse-fg: #f6f3ec;
+  --inverse-hover: #262e3b;
+  --inverse-accent: #ff7a50;
+  --input-bg: #ffffff;
+  --input-text: #11151c;
+  --placeholder: #5d6577;
+  --hover: #ece7db;           /* neutral hover wash */
+  --focus: #11151c;
+  --danger-text: #b42318;
+
+  /* Chrome */
+  --nav-bg: rgb(246 243 236 / 0.96);
+  --nav-text: #11151c;
+  --nav-accent: #a12a0a;
+  --nav-border: #7e796b;
+  --nav-hover: rgb(17 21 28 / 0.08);
+  --footer-bg: #ece7db;
+  --menu-bg: #f6f3ec;
+
+  /* Depth */
+  --shadow-card: 0 1px 2px rgb(11 14 19 / 0.06), 0 8px 24px -12px rgb(11 14 19 / 0.18);
+  --shadow-lift: 0 2px 4px rgb(11 14 19 / 0.08), 0 24px 48px -20px rgb(11 14 19 / 0.35);
+  --shadow-glow: 0 0 0 1px rgb(255 75 31 / 0.5), 0 12px 32px -8px rgb(255 75 31 / 0.45);
+
+  /* Decoration */
+  --checker-a: #0b0e13;
+  --checker-b: #f6f3ec;
+  --section-bg: var(--bg);
+}
+
+/* ==========================================================================
+   2 · SEMANTIC TOKENS — DARK  (asphalt · garage, lifted flame + volt accents)
+   ========================================================================== */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #0b0e13;              /* Asphalt */
+  --bg-alt: #11151c;
+  --bg-raised: #1a202a;       /* Garage */
+  --surface: #151a23;
+  --surface-alt: #1a202a;
+
+  --heading: #f3f1ea;
+  --text: #f3f1ea;
+  --text-muted: #a8b1c0;
+  --text-accent: #ff7a50;
+  --highlight: #c8f031;       /* Pit-lane Volt */
+  --display-accent: #ff4b1f;  /* Apex Flame at full brand strength on asphalt / garage */
+
+  --border: #2a3342;
+  --border-strong: #6b768b;
+
+  --brand: #ff4b1f;
+  --on-brand: #0b0e13;
+  --brand-hover: #ff6238;
+  --inverse-bg: #f3f1ea;      /* "inverse" button: light on dark */
+  --inverse-fg: #0b0e13;
+  --inverse-hover: #ffffff;
+  --inverse-accent: #a12a0a;
+  --input-bg: #151a23;
+  --input-text: #f3f1ea;
+  --placeholder: #98a2b3;
+  --hover: #1a202a;
+  --focus: #f3f1ea;
+  --danger-text: #ff8a80;
+
+  --nav-bg: rgb(11 14 19 / 0.96);
+  --nav-text: #f3f1ea;
+  --nav-accent: #ff7a50;
+  --nav-border: #6b768b;
+  --nav-hover: rgb(255 255 255 / 0.1);
+  --footer-bg: #07090d;
+  --menu-bg: #0b0e13;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 10px 28px -14px rgb(0 0 0 / 0.7);
+  --shadow-lift: 0 2px 4px rgb(0 0 0 / 0.5), 0 24px 48px -20px rgb(0 0 0 / 0.8);
+  --shadow-glow: 0 0 0 1px rgb(255 75 31 / 0.55), 0 12px 32px -8px rgb(255 75 31 / 0.5);
+
+  --checker-a: #0b0e13;
+  --checker-b: #f3f1ea;
+  --section-bg: var(--bg);
+}
+
+/* ==========================================================================
+   3 · SECTION TONES  (theme-aware — they follow the active theme)
+   Rhythm per theme:
+     light : paper → ivory → white → paper …
+     dark  : asphalt → #11151c → garage → asphalt …
+   ========================================================================== */
+.tone-base   { --section-bg: var(--bg); }
+.tone-alt    { --section-bg: var(--bg-alt); }
+.tone-raised { --section-bg: var(--bg-raised); }
+
+/* Accent band: Apex Flame in light, deep flame in dark (accent text stays AA in each) */
+.tone-accent { --section-bg: #ff4b1f; --heading: #0b0e13; --text: #0b0e13; --text-muted: #2a1008; --text-accent: #0b0e13; --highlight: #0b0e13; --display-accent: #0b0e13;
+  --border: rgb(11 14 19 / 0.28); --border-strong: #0b0e13; --focus: #0b0e13;
+  --inverse-bg: #0b0e13; --inverse-fg: #f6f3ec; --inverse-hover: #262e3b; --inverse-accent: #ff7a50; }
+[data-theme="dark"] .tone-accent { --section-bg: #a12a0a; --heading: #ffffff; --text: #ffffff; --text-muted: #ffe3d9; --text-accent: #ffffff; --highlight: #ffffff; --display-accent: #ffffff;
+  --border: rgb(255 255 255 / 0.3); --border-strong: #ffffff; --focus: #ffffff;
+  --inverse-bg: #f3f1ea; --inverse-fg: #0b0e13; --inverse-hover: #ffffff; --inverse-accent: #a12a0a; }
+
+/* ==========================================================================
+   4 · PHOTO CONTEXT  (fixed light-on-dark: overlays guarantee the contrast)
+   Applied to heroes, photographic panes, CTAs and anything over an image.
+   ========================================================================== */
+.on-photo, .hero, .cta-photo, .track-pane, .versus-head, .mosaic figcaption {
+  --heading: #f3f1ea; --text: #f3f1ea; --text-muted: #dfe3ea; --text-accent: #c8f031; --highlight: #c8f031; --display-accent: #ff7a50;
+  --border: rgb(255 255 255 / 0.28); --border-strong: rgb(255 255 255 / 0.8); --focus: #ffffff;
+  --hover: rgb(255 255 255 / 0.14); --inverse-bg: #f3f1ea; --inverse-fg: #0b0e13; --inverse-hover: #ffffff; --inverse-accent: #a12a0a;
+  --photo-ink: #0b0e13; color: var(--text);
+}
+
+/* Header over a photographic hero (top of page only): light-on-photo nav tokens */
+.site-header[data-over="true"] {
+  --nav-text: #f3f1ea; --nav-accent: #c8f031; --nav-border: rgb(255 255 255 / 0.7); --nav-hover: rgb(255 255 255 / 0.14);
+}
+
+/* Photo scrims & fallbacks (shared so every overlay is tuned in one place) */
+:root {
+  --photo-fallback: #0b0e13;
+  --scrim-strong: rgb(11 14 19 / 0.92);
+  --scrim-mid: rgb(11 14 19 / 0.62);
+  --scrim-soft: rgb(11 14 19 / 0.3);
+  --scrim-side: rgb(11 14 19 / 0.78);
+  --scrim-caption: linear-gradient(to top, rgb(11 14 19 / 0.94) 0, rgb(11 14 19 / 0.78) 55%, transparent);
+  --scrim-flat: rgb(11 14 19 / 0.74);
+  --scrim-veil: rgb(11 14 19 / 0.3);   /* uniform base layer: bright photo regions can never undercut AA */
+  --scrim-top: rgb(11 14 19 / 0.78);   /* guarantees the transparent header is readable over any photo */
+}
+
+/* ==========================================================================
+   5 · Utilities for the semantic tokens (inline ⇒ they follow the scope they sit in)
+   ========================================================================== */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-alt: var(--bg-alt);
+  --color-raised: var(--bg-raised);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-heading: var(--heading);
+  --color-text: var(--text);
+  --color-muted: var(--text-muted);
+  --color-accent: var(--text-accent);
+  --color-highlight: var(--highlight);
+  --color-display: var(--display-accent);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-on-brand: var(--on-brand);
+  --color-focus: var(--focus);
+}

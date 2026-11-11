@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Racer Dashboard – Apexline Kart Circuit</title>
+  <meta name="description" content="Your bookings, lap times, performance, leaderboard position and payments at Apexline Kart Circuit.">
+  <meta name="theme-color" content="#0b0e13">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/assets/fonts/big-shoulders-display-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/dist/styles.css">
+  <script src="/js/theme-init.js"></script>
+  <script type="module" src="/js/main.js"></script>
+</head>
+<body data-page="dashboard">
+  <div data-component="app-bar"></div>
+
+  <main id="main" class="dash">
+    <div class="container-wide dash-shell">
+      <aside class="dash-side" aria-label="Racer account">
+        <div class="dash-user">
+          <span class="avatar" data-slot="avatar" aria-hidden="true"></span>
+          <div class="min-w-0"><p class="dash-user-name" data-slot="name"></p><p class="dash-user-meta" data-slot="meta"></p></div>
+        </div>
+        <nav class="dash-nav" aria-label="Dashboard sections">
+          <ul>
+            <li><a href="#overview" data-view-link="overview">{{icon:grid}}<span>Overview</span></a></li>
+            <li><a href="#bookings" data-view-link="bookings">{{icon:calendar}}<span>Bookings</span></a></li>
+            <li><a href="#laptimes" data-view-link="laptimes">{{icon:stopwatch}}<span>Lap times</span></a></li>
+            <li><a href="#performance" data-view-link="performance">{{icon:bars}}<span>Performance</span></a></li>
+            <li><a href="#leaderboard" data-view-link="leaderboard">{{icon:trophy}}<span>Leaderboard</span></a></li>
+            <li><a href="#payments" data-view-link="payments">{{icon:credit-card}}<span>Payments</span></a></li>
+            <li><a href="#profile" data-view-link="profile">{{icon:user}}<span>Profile</span></a></li>
+          </ul>
+        </nav>
+        <a class="dash-signout" href="/login">{{icon:log-out}}<span>Sign out</span></a>
+      </aside>
+
+      <div class="dash-main">
+        <h1 class="dash-title">Racer dashboard</h1>
+
+        <!-- ===== OVERVIEW ===== -->
+        <section class="dash-view" data-view="overview" aria-labelledby="v-overview">
+          <h2 id="v-overview" class="dash-h2">Welcome back, <span data-slot="first-name"></span></h2>
+          <div class="dstats" data-slot="stats-overview"></div>
+          <div class="dgrid">
+            <article class="dpanel dnext" aria-labelledby="p-next">
+              <header class="dpanel-head"><h3 id="p-next">Next race</h3><a class="dlink" href="#bookings">All bookings</a></header>
+              <div data-slot="next-race"></div>
+            </article>
+            <article class="dpanel" aria-labelledby="p-trend">
+              <header class="dpanel-head"><h3 id="p-trend">Indoor best lap by session</h3><span class="dnote" data-slot="trend-note"></span></header>
+              <div class="chart" dir="ltr" data-chart="overview-trend"></div>
+            </article>
+            <article class="dpanel dgrid-wide" aria-labelledby="p-recent">
+              <header class="dpanel-head"><h3 id="p-recent">Recent sessions</h3><a class="dlink" href="#laptimes">Lap times</a></header>
+              <div data-slot="recent"></div>
+            </article>
+          </div>
+        </section>
+
+        <!-- ===== BOOKINGS ===== -->
+        <section class="dash-view" data-view="bookings" aria-labelledby="v-bookings" hidden>
+          <h2 id="v-bookings" class="dash-h2">Bookings</h2>
+          <div class="dpanel-head dpanel-head-flush"><h3>Upcoming</h3><a class="btn btn-primary btn-sm" href="/races-pricing#book">{{icon:plus}} Book a Race</a></div>
+          <div class="dbookings" data-slot="upcoming"></div>
+          <div class="dpanel-head dpanel-head-flush mt-10">
+            <h3>History</h3>
+            <div class="seg" role="group" aria-label="Filter history by circuit">
+              <button type="button" class="seg-btn" data-hist-filter="all" aria-pressed="true">All</button>
+              <button type="button" class="seg-btn" data-hist-filter="indoor" aria-pressed="false">Indoor</button>
+              <button type="button" class="seg-btn" data-hist-filter="outdoor" aria-pressed="false">Outdoor</button>
+            </div>
+          </div>
+          <div data-slot="history"></div>
+        </section>
+
+        <!-- ===== LAP TIMES ===== -->
+        <section class="dash-view" data-view="laptimes" aria-labelledby="v-laps" hidden>
+          <div class="dpanel-head dpanel-head-flush"><h2 id="v-laps" class="dash-h2 m-0">Lap-time records</h2><button type="button" class="btn btn-secondary btn-sm" data-export="laps">{{icon:download}} Export CSV</button></div>
+          <div data-tabs class="mt-4">
+            <div class="seg" role="tablist" aria-label="Circuit">
+              <button class="seg-btn" role="tab" id="lt-in" aria-controls="lt-panel-in" aria-selected="true">Indoor</button>
+              <button class="seg-btn" role="tab" id="lt-out" aria-controls="lt-panel-out" aria-selected="false" tabindex="-1">Outdoor</button>
+            </div>
+            <div role="tabpanel" id="lt-panel-in" aria-labelledby="lt-in" class="dtab" data-circuit="indoor"></div>
+            <div role="tabpanel" id="lt-panel-out" aria-labelledby="lt-out" class="dtab" data-circuit="outdoor" hidden></div>
+          </div>
+        </section>
+
+        <!-- ===== PERFORMANCE ===== -->
+        <section class="dash-view" data-view="performance" aria-labelledby="v-perf" hidden>
+          <h2 id="v-perf" class="dash-h2">Performance</h2>
+          <div class="dstats" data-slot="stats-performance"></div>
+          <div class="dgrid">
+            <article class="dpanel" aria-labelledby="p-pos">
+              <header class="dpanel-head"><h3 id="p-pos">Finishing position</h3><span class="dnote">Lower is better</span></header>
+              <div class="chart" dir="ltr" data-chart="positions"></div>
+            </article>
+            <article class="dpanel" aria-labelledby="p-final">
+              <header class="dpanel-head"><h3 id="p-final">Lap by lap · <span data-slot="final-title"></span></h3><span class="dnote" data-slot="final-note"></span></header>
+              <div class="chart" dir="ltr" data-chart="final-laps"></div>
+            </article>
+          </div>
+        </section>
+
+        <!-- ===== LEADERBOARD ===== -->
+        <section class="dash-view" data-view="leaderboard" aria-labelledby="v-board" hidden>
+          <h2 id="v-board" class="dash-h2">Leaderboard</h2>
+          <div data-tabs>
+            <div class="seg" role="tablist" aria-label="Circuit leaderboard">
+              <button class="seg-btn" role="tab" id="lb-in" aria-controls="lb-panel-in" aria-selected="true">Indoor</button>
+              <button class="seg-btn" role="tab" id="lb-out" aria-controls="lb-panel-out" aria-selected="false" tabindex="-1">Outdoor</button>
+            </div>
+            <div role="tabpanel" id="lb-panel-in" aria-labelledby="lb-in" class="dtab" data-board="indoor"></div>
+            <div role="tabpanel" id="lb-panel-out" aria-labelledby="lb-out" class="dtab" data-board="outdoor" hidden></div>
+          </div>
+        </section>
+
+        <!-- ===== PAYMENTS ===== -->
+        <section class="dash-view" data-view="payments" aria-labelledby="v-pay" hidden>
+          <div class="dpanel-head dpanel-head-flush"><h2 id="v-pay" class="dash-h2 m-0">Payment history</h2><button type="button" class="btn btn-secondary btn-sm" data-export="payments">{{icon:download}} Export CSV</button></div>
+          <div class="dstats mt-4" data-slot="stats-payments"></div>
+          <div data-slot="payments"></div>
+        </section>
+
+        <!-- ===== PROFILE ===== -->
+        <section class="dash-view" data-view="profile" aria-labelledby="v-profile" hidden>
+          <h2 id="v-profile" class="dash-h2">Profile</h2>
+          <div class="dgrid dgrid-profile">
+            <article class="dpanel" aria-labelledby="p-details">
+              <header class="dpanel-head"><h3 id="p-details">Racer details</h3></header>
+              <form data-validate data-profile-form aria-labelledby="p-details">
+                <div class="form-grid cols-2">
+                  <div class="field"><label class="field-label" for="pf-name">Full name</label><input class="field-input" id="pf-name" name="name" type="text" autocomplete="name" required minlength="2" data-error-required="Please enter your full name." data-error-short="Please enter your full name."><p class="field-error" data-error id="err-pf-name"></p></div>
+                  <div class="field"><label class="field-label" for="pf-email">Email address</label><input class="field-input" id="pf-email" name="email" type="email" dir="ltr" autocomplete="email" required pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" data-error-required="Please enter your email address." data-error-type="Enter a valid email address." data-error-pattern="Enter a valid email address."><p class="field-error" data-error id="err-pf-email"></p></div>
+                  <div class="field"><label class="field-label" for="pf-phone">Phone number</label><input class="field-input" id="pf-phone" name="phone" type="tel" dir="ltr" autocomplete="tel" required pattern="\+?[0-9][0-9 \(\)\-\.]{6,18}" data-error-required="Please enter your phone number." data-error-pattern="Enter a valid phone number."><p class="field-error" data-error id="err-pf-phone"></p></div>
+                  <div class="field"><label class="field-label" for="pf-circuit">Preferred circuit</label><div class="select-wrap"><select class="field-input" id="pf-circuit" name="circuit"><option>Indoor</option><option>Outdoor</option></select></div></div>
+                </div>
+                <label class="check-row mt-5"><input type="checkbox" name="reminders" class="check-box"><span>Email me a reminder before each booking</span></label>
+                <div class="mt-5"><button class="btn btn-primary" type="submit">Save changes</button></div>
+                <p class="form-status" data-profile-status role="status" tabindex="-1" hidden></p>
+              </form>
+            </article>
+            <article class="dpanel" aria-labelledby="p-card">
+              <header class="dpanel-head"><h3 id="p-card">Racer card</h3></header>
+              <div class="rcard" data-slot="racer-card"></div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <dialog class="ddialog" id="cancel-dialog" aria-labelledby="cancel-title">
+      <form method="dialog">
+        <h2 id="cancel-title" class="dash-h2">Cancel this booking?</h2>
+        <p class="text-muted" data-slot="cancel-text"></p>
+        <div class="dialog-actions"><button class="btn btn-secondary" value="keep">Keep booking</button><button class="btn btn-dark" value="cancel" data-confirm-cancel>Cancel booking</button></div>
+      </form>
+    </dialog>
+  </main>
+
+</body>
+</html>

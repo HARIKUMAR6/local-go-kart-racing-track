@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact – Apexline Kart Circuit</title>
+  <meta name="description" content="Find Apexline Kart Circuit, see opening hours, call or email the team, and send a race enquiry.">
+  <meta name="theme-color" content="#0b0e13">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/assets/fonts/big-shoulders-display-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/dist/styles.css">
+  <script src="/js/theme-init.js"></script>
+  <script type="module" src="/js/main.js"></script>
+</head>
+<body data-page="contact">
+  <div data-component="site-header"></div>
+
+  <main id="main">
+    <!-- ============ 1 · CONTACT HERO ============ -->
+    <section class="hero hero-compact hero-inner hero-contact" aria-labelledby="contact-title">
+      <div class="hero-media">{{img:ct-hero|sizes=100vw|eager}}</div>
+      <div class="hero-scrim"></div>
+      <div class="container-narrow on-photo">
+        <div class="hero-copy">
+          <p class="eyebrow">Contact Apexline</p>
+          <h1 id="contact-title">Your next lap<br><span class="text-display">starts here.</span></h1>
+          <p class="lead">Questions about a race, a group or a visit? Call, email or send an enquiry and the pit crew will help.</p>
+          <div class="cta-row cta-row-center">
+            <a class="btn btn-primary btn-lg" href="#enquiry">Send an Enquiry</a>
+            <a class="btn btn-secondary btn-lg" href="#map">Find the Circuit</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 2 · CONTACT INFORMATION ============ -->
+    <section id="info" class="section tone-base" aria-labelledby="info-title">
+      <div class="container-wide">
+        <div class="section-head section-head-center"><p class="eyebrow">Get in touch</p><h2 id="info-title">Contact information</h2></div>
+        <div class="info-grid">
+          <article class="info-card"><span class="info-ico" aria-hidden="true">{{icon:map-pin}}</span><h3>Venue address</h3><address>{{site:contact.addressLines.0}}<br>{{site:contact.addressLines.1}}</address></article>
+          <article class="info-card"><span class="info-ico" aria-hidden="true">{{icon:phone}}</span><h3>Phone</h3><a dir="ltr" href="{{site:contact.phoneHref}}">{{site:contact.phone}}</a></article>
+          <article class="info-card"><span class="info-ico" aria-hidden="true">{{icon:mail}}</span><h3>Email</h3><a dir="ltr" href="mailto:{{site:contact.email}}">{{site:contact.email}}</a></article>
+          <article class="info-card"><span class="info-ico" aria-hidden="true">{{icon:clock}}</span><h3>Operating hours</h3><dl><div><dt>{{site:contact.hours.0.days}}</dt><dd>{{site:contact.hours.0.time}}</dd></div><div><dt>{{site:contact.hours.1.days}}</dt><dd>{{site:contact.hours.1.time}}</dd></div></dl></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3 · LOCATION MAP ============ -->
+    <section id="map" class="section tone-raised" aria-labelledby="map-title">
+      <div class="container-wide map-layout">
+        <div class="map-side">
+          <div class="section-head head-left m-0"><p class="eyebrow">Find the circuit</p><h2 id="map-title">Our location</h2></div>
+          <address>{{site:contact.addressLines.0}}<br>{{site:contact.addressLines.1}}</address>
+          <div class="map-actions">
+            <a class="btn btn-primary" href="{{map:directions}}" target="_blank" rel="noopener noreferrer">{{icon:map-pin}} Get Directions<span class="visually-hidden"> (opens in a new tab)</span></a>
+            <a class="btn btn-secondary" href="{{map:view}}" target="_blank" rel="noopener noreferrer">View larger map<span class="visually-hidden"> (opens in a new tab)</span></a>
+          </div>
+        </div>
+        <div class="map-frame">
+          <iframe title="Interactive map showing the location of Apexline Kart Circuit" src="{{map:embed}}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4 · SEND AN ENQUIRY ============ -->
+    <section id="enquiry" class="section tone-alt" aria-labelledby="enq-title">
+      <div class="container-wide form-layout">
+        <div>
+          <div class="section-head head-left"><p class="eyebrow">Send an enquiry</p><h2 id="enq-title">Tell us about your race</h2></div>
+          <p class="lead">Share the format, group size or date you have in mind. Your message opens in your email app, ready to send to the team.</p>
+          <ul class="mt-6 grid gap-3 font-bold">
+            <li class="flex items-center gap-3"><span class="text-accent">{{icon:check}}</span> Race format and number of drivers</li>
+            <li class="flex items-center gap-3"><span class="text-accent">{{icon:check}}</span> Preferred day and circuit</li>
+            <li class="flex items-center gap-3"><span class="text-accent">{{icon:check}}</span> Any questions about the day</li>
+          </ul>
+        </div>
+        <div class="form-card">
+          <form data-validate data-contact-form aria-labelledby="enq-title">
+            <div class="form-grid cols-2">
+              <div class="field">
+                <label class="field-label" for="c-name">Full name <span class="req" aria-hidden="true">*</span></label>
+                <input class="field-input" id="c-name" name="name" type="text" autocomplete="name" required minlength="2" data-error-required="Please enter your full name." data-error-short="Please enter your full name.">
+                <p class="field-error" data-error id="err-c-name"></p>
+              </div>
+              <div class="field">
+                <label class="field-label" for="c-email">Email address <span class="req" aria-hidden="true">*</span></label>
+                <input class="field-input" id="c-email" name="email" type="email" autocomplete="email" inputmode="email" dir="ltr" required pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" data-error-required="Please enter your email address." data-error-type="Enter a valid email address, like name@example.com." data-error-pattern="Enter a valid email address, like name@example.com.">
+                <p class="field-error" data-error id="err-c-email"></p>
+              </div>
+              <div class="field">
+                <label class="field-label" for="c-phone">Phone number <span class="field-hint">(optional)</span></label>
+                <input class="field-input" id="c-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" dir="ltr" pattern="\+?[0-9][0-9 \(\)\-\.]{6,18}" data-error-pattern="Enter a valid phone number, for example +1 512 555 0100.">
+                <p class="field-error" data-error id="err-c-phone"></p>
+              </div>
+              <div class="field">
+                <label class="field-label" for="c-type">Enquiry type <span class="req" aria-hidden="true">*</span></label>
+                <div class="select-wrap">
+                  <select class="field-input" id="c-type" name="type" required data-error-required="Please choose an enquiry type.">
+                    <option value="">Choose one…</option>
+                    <option value="Race booking" data-key="individual">Race booking: {{fname:individual}}</option>
+                    <option value="Race booking" data-key="sprint">Race booking: {{fname:sprint}}</option>
+                    <option value="Race booking" data-key="competitive">Race booking: {{fname:competitive}}</option>
+                    <option value="Group or event enquiry" data-key="group">Group or birthday event</option>
+                    <option value="Corporate event enquiry" data-key="corporate">Corporate event</option>
+                    <option value="Indoor or outdoor circuit question" data-key="indoor">Indoor or outdoor circuit</option>
+                    <option value="General question" data-key="general">General question</option>
+                  </select>
+                </div>
+                <p class="field-error" data-error id="err-c-type"></p>
+              </div>
+              <div class="field span-2">
+                <label class="field-label" for="c-message">Message <span class="req" aria-hidden="true">*</span></label>
+                <textarea class="field-input" id="c-message" name="message" rows="5" required minlength="10" data-error-required="Please tell us how we can help." data-error-short="Please write at least 10 characters."></textarea>
+                <p class="field-error" data-error id="err-c-message"></p>
+              </div>
+            </div>
+            <p class="form-note"><span class="req" aria-hidden="true">*</span> Required fields</p>
+            <div class="mt-5"><button class="btn btn-primary btn-lg" type="submit">Send Enquiry</button></div>
+            <div class="form-status" data-form-status role="status" tabindex="-1" hidden></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 5 · PLAN YOUR VISIT ============ -->
+    <section id="visit" class="section tone-base" aria-labelledby="visit-title">
+      <div class="container-wide visit-grid">
+        <div class="visit-photo">{{img:ct-visit|sizes=(min-width:1024px) 42vw,100vw}}</div>
+        <div>
+          <div class="section-head head-left"><p class="eyebrow">Plan your visit</p><h2 id="visit-title">Before you arrive</h2></div>
+          <ol class="visit-list">
+            <li class="visit-item"><span class="outline-num" aria-hidden="true">01</span><h3>Arrival &amp; check-in</h3><p>Check in with the team at the circuit, then head to your briefing.</p></li>
+            <li class="visit-item"><span class="outline-num" aria-hidden="true">02</span><h3>Pre-race preparation</h3><p>Your race suit, gloves, neck protection and helmet are fitted before you race. <a href="/safety">See the safety guide</a></p></li>
+            <li class="visit-item"><span class="outline-num" aria-hidden="true">03</span><h3>Group visits</h3><p>Planning for 8 or more? Group Racing comes with a private grid and a host. <a href="#enquiry">Send a group enquiry</a></p></li>
+            <li class="visit-item"><span class="outline-num" aria-hidden="true">04</span><h3>Need a hand?</h3><p>Call <a dir="ltr" href="{{site:contact.phoneHref}}">{{site:contact.phone}}</a> or email <a dir="ltr" href="mailto:{{site:contact.email}}">{{site:contact.email}}</a>.</p></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 6 · FINAL RACING CTA ============ -->
+    <section class="cta-block tone-raised" aria-labelledby="contact-cta-title">
+      <div class="checker-band top" aria-hidden="true"></div>
+      <div class="container-narrow cta-inner">
+        <p class="eyebrow">Race day awaits</p>
+        <h2 id="contact-cta-title" class="megatype">Find your line.<br><span class="text-accent">Own the apex.</span></h2>
+        <div class="cta-row cta-row-center"><a class="btn btn-primary btn-lg" href="/races-pricing#packages">Explore Racing Packages</a><a class="btn btn-dark btn-lg" href="/races-pricing#book">Book a Race</a></div>
+      </div>
+      <div class="checker-band bottom" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <div data-component="site-footer"></div>
+</body>
+</html>

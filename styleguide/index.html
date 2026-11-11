@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Design System – Apexline</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/assets/fonts/big-shoulders-display-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/dist/styles.css">
+  <script src="/js/theme-init.js"></script>
+  <script type="module" src="/js/main.js"></script>
+</head>
+<body data-page="styleguide" data-header="overlay">
+  <div data-component="site-header"></div>
+
+  <main id="main">
+    <!-- Hero: compact variant of the shared viewport hero system -->
+    <section class="hero hero-compact" aria-labelledby="sg-title">
+      <div class="hero-media bg-gradient-to-br from-ink-800 via-ink-950 to-ink-900"></div>
+      <div class="hero-scrim"></div>
+      <div class="container-wide text-center md:text-start">
+        <p class="eyebrow">Design System</p>
+        <h1 id="sg-title" class="mt-3">Find your line.<br><span class="text-brand">Own the apex.</span></h1>
+        <p class="mx-auto mt-4 max-w-xl text-muted md:mx-0">Tokens, type, controls and components for every Apexline page.</p>
+        <div class="cta-row mt-6"><a class="btn btn-primary btn-lg" href="#buttons">View components</a><a class="btn btn-secondary btn-lg" href="#colour">Colour tokens</a></div>
+      </div>
+    </section>
+
+    <!-- Colour -->
+    <section id="colour" class="section">
+      <div class="container-site">
+        <div class="section-head"><p class="eyebrow">01 · Colour</p><h2>Palette</h2></div>
+        <div class="grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-6">
+          <div class="card"><div class="h-20 bg-ink-950"></div><p class="p-3 text-sm font-bold">Asphalt<br><span class="font-normal text-muted">#0B0E13</span></p></div>
+          <div class="card"><div class="h-20 bg-ink-800"></div><p class="p-3 text-sm font-bold">Garage<br><span class="font-normal text-muted">#1A202A</span></p></div>
+          <div class="card"><div class="h-20 bg-paper-50 border-b border-line"></div><p class="p-3 text-sm font-bold">Kerb White<br><span class="font-normal text-muted">#F6F3EC</span></p></div>
+          <div class="card"><div class="h-20 bg-flame-500"></div><p class="p-3 text-sm font-bold">Apex Flame<br><span class="font-normal text-muted">#FF4B1F</span></p></div>
+          <div class="card"><div class="h-20 bg-volt-500"></div><p class="p-3 text-sm font-bold">Pit-lane Volt<br><span class="font-normal text-muted">#C8F031</span></p></div>
+          <div class="card"><div class="h-20 bg-steel-400"></div><p class="p-3 text-sm font-bold">Steel<br><span class="font-normal text-muted">#A8B1C0</span></p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography on a fixed-tone dark band -->
+    <section class="section tone-raised">
+      <div class="container-site grid gap-10 lg:grid-cols-2">
+        <div class="text-center lg:text-start">
+          <p class="eyebrow">02 · Typography</p>
+          <h2 class="mt-3">Big Shoulders Display</h2>
+          <p class="mt-3 text-muted">Display · 800 · uppercase · tight leading</p>
+          <p class="lap-time mt-6 text-6xl text-brand">01:12.384</p>
+        </div>
+        <div class="grid gap-3 text-center lg:text-start">
+          <h3>Heading Three</h3>
+          <h4>Heading Four</h4>
+          <p class="text-lg">Manrope body – clean, geometric and highly legible at small sizes.</p>
+          <p class="text-sm text-muted">Small supporting text with AA contrast on every surface.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buttons -->
+    <section id="buttons" class="section section-alt">
+      <div class="container-site">
+        <div class="section-head"><p class="eyebrow">03 · Buttons</p><h2>Controls</h2></div>
+        <div class="cta-row">
+          <button class="btn btn-primary" type="button">Primary</button>
+          <button class="btn btn-secondary" type="button">Secondary</button>
+          <button class="btn btn-inverse" type="button">Inverse</button>
+          <button class="btn btn-volt" type="button">Volt</button>
+          <button class="btn btn-ghost" type="button">Ghost</button>
+          <button class="btn btn-primary" type="button" disabled>Disabled</button>
+        </div>
+        <div class="cta-row mt-4">
+          <button class="btn btn-primary btn-sm" type="button">Small</button>
+          <button class="btn btn-primary btn-lg" type="button">Large</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Forms + cards -->
+    <section class="section">
+      <div class="container-site grid gap-10 lg:grid-cols-2">
+        <div>
+          <div class="section-head"><p class="eyebrow">04 · Forms</p><h2>Fields</h2></div>
+          <form class="card card-pad grid gap-4" data-validate id="sg-form">
+            <div class="field"><label class="field-label" for="sg-name">Full name</label>
+              <input class="field-input" id="sg-name" name="name" autocomplete="name" required minlength="2" placeholder="Alex Rivera">
+              <p class="field-error" data-error></p></div>
+            <div class="field"><label class="field-label" for="sg-email">Email</label>
+              <input class="field-input" id="sg-email" name="email" type="email" autocomplete="email" required placeholder="alex@example.com">
+              <p class="field-error" data-error></p></div>
+            <button class="btn btn-primary btn-block" type="submit">Submit</button>
+          </form>
+        </div>
+        <div>
+          <div class="section-head"><p class="eyebrow">05 · Cards</p><h2>Surfaces</h2></div>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <article class="card card-pad card-interactive"><p class="eyebrow">Indoor</p><h3 class="mt-2">Sprint</h3><p class="mt-2 text-muted">Interactive card with lift.</p></article>
+            <article class="card card-pad chamfer"><p class="eyebrow">Outdoor</p><h3 class="mt-2">Grand Prix</h3><p class="mt-2 text-muted">Chamfered surface.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tone-accent">
+      <div class="container-site text-center">
+        <h2>Ready to race?</h2>
+        <div class="cta-row cta-row-center mt-6"><a class="btn btn-inverse btn-lg" href="/races-pricing#book">Book a Race</a></div>
+      </div>
+    </section>
+  </main>
+
+  <div data-component="site-footer"></div>
+</body>
+</html>
